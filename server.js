@@ -9,8 +9,8 @@ var cheerio = require("cheerio");
 var app = express();
 
 // Database configuration
-var databaseUrl = "scraper";
-var collections = ["scrapedData"];
+var databaseUrl = "newscraper";
+var collections = ["newScrapedData"];
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
@@ -26,7 +26,7 @@ app.get("/", function(req, res) {
 // Retrieve data from the db
 app.get("/all", function(req, res) {
   // Find all results from the scrapedData collection in the db
-  db.scrapedData.find({}, function(error, found) {
+  db.newScrapedData.find({}, function(error, found) {
     // Throw any errors to the console
     if (error) {
       console.log(error);
@@ -41,19 +41,20 @@ app.get("/all", function(req, res) {
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
   // Make a request via axios for the news section of `ycombinator`
-  axios.get("https://blackamericaweb.com/").then(function(response) {
+  axios.get("https://blackamericaweb.com").then(function(response) {
     // Load the html body from axios into cheerio
     var $ = cheerio.load(response.data);
     // For each element with a "title" class
     $("div.post-title").each(function(i, element) {
       // Save the text and href of each link enclosed in the current element
-      var title = $(element).children("a").text();
+      var title = $(element).text();
+      // var title = $(element).parent("a").text();
       var link = $(element).parent("a").attr("href");
 
       // If this found element had both a title and a link
       if (title && link) {
         // Insert the data in the scrapedData db
-        db.scrapedData.insert({
+        db.newScrapedData.insert({
           title: title,
           link: link
         },
