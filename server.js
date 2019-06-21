@@ -1,12 +1,22 @@
 // Dependencies
 var express = require("express");
 var mongojs = require("mongojs");
+var exphbs = require("express-handlebars")
+
+
+
 // Require axios and cheerio. This makes the scraping possible
 var axios = require("axios");
 var cheerio = require("cheerio");
 
 // Initialize Express
 var app = express();
+
+app.engine("handlebars",exphbs({defaultLayout:"main"}));
+app.set("view engine","handlebars");
+
+// Making public folder public
+app.use(express.static("public"));
 
 // Database configuration
 var databaseUrl = "newscraper";
@@ -20,7 +30,7 @@ db.on("error", function(error) {
 
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
-  res.send("Hello world");
+  res.render("contact");
 });
 
 // Retrieve data from the db
@@ -33,7 +43,8 @@ app.get("/all", function(req, res) {
     }
     // If there are no errors, send the data to the browser as json
     else {
-      res.json(found);
+      console.log(found)
+      res.render("allnews",{articles:found});
     }
   });
 });
