@@ -13,8 +13,14 @@
     }
   }
 
+.jumbotron{
+    background-color: #675682
+    
 
+}
 
 body{
     background-color: #67aeca;
+    color: whitesmoke
+    
 }
