@@ -29,7 +29,7 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
-// Main route (simple Hello World Message)
+// Main route to Home Page
 app.get("/", function(req, res) {
   res.render("contact");
 });
