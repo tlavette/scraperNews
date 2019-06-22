@@ -22,6 +22,7 @@ app.use(express.static("public"));
 // Database configuration
 var databaseUrl = "newscraper";
 var collections = ["newScrapedData"];
+var notes = ["noteData"];
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
@@ -52,6 +53,7 @@ app.get("/all", function(req, res) {
 
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
+  db.newScrapedData.remove({});
   // Make a request via axios for the news section of `ycombinator`
   axios.get("https://blackamericaweb.com").then(function(response) {
     // Load the html body from axios into cheerio
@@ -78,6 +80,8 @@ app.get("/scrape", function(req, res) {
           else {
             // Otherwise, log the inserted data
             console.log(inserted);
+
+            
           }
         });
       }
