@@ -53,7 +53,8 @@ app.get("/all", function(req, res) {
 
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
-  // db.newScrapedData.remove({});
+  db.newScrapedData.remove({});
+  
   // Make a request via axios for the news section of `ycombinator`
   axios.get("https://blackamericaweb.com").then(function(response) {
     // Load the html body from axios into cheerio
@@ -90,6 +91,7 @@ app.get("/scrape", function(req, res) {
 
   // Send a "Scrape Complete" message to the browser
   res.send("Scrape Complete");
+  // res.render("allnews");
 });
 
 // submit action to insert note in the notes collection.
