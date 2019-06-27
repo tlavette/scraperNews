@@ -13,3 +13,4 @@ $(".form-check-input").change(function () {
 // as saved.
 
 // in server, instead of deleting everything, should check if save != true and delete those only.
+

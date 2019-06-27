@@ -2,7 +2,8 @@
 var express = require("express");
 var mongojs = require("mongojs");
 var exphbs = require("express-handlebars");
-var mongoose = require("mongoose");
+var path = require("path");
+
 
 
 
@@ -46,7 +47,7 @@ app.get("/all", function(req, res) {
     // If there are no errors, send the data to the browser as json
     else {
       console.log(found)
-      res.render("allnews",{articles:found});
+      res.render("allnews", { articles: found });
     }
   });
 });
@@ -95,17 +96,17 @@ app.get("/scrape", function(req, res) {
 });
 
 // submit action to insert note in the notes collection.
-app.post("/submit", function(req, res){
+app.post("/notes", function(req, res){
   console.log(req.body);
 
   // insert notes into the notes collection
-  db.notes.insert(req.body, function(error, saved){
+  db.note.insert(req.body, function(error, noted){
     // log errors
     if (error){
     console.log(error);
   }
   else {
-    res.send(saved);
+    res.send(noted);
   }
   });
 })
