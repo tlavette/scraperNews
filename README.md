@@ -7,7 +7,7 @@ Web Scraping is the process in which data is targeted and extracted by specific 
 
 ## Technologies Used:
 [ ] Cheerio Nodejs library
-[ ] MongoDB
+[ ] MongoDB 
 [ ] Express - Handlebars
 [ ] Mongojs
 [ ] Heroku
