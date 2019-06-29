@@ -3,6 +3,7 @@ var express = require("express");
 var mongojs = require("mongojs");
 var exphbs = require("express-handlebars");
 var path = require("path");
+var mongoose = require("mongoose");
 
 
 
@@ -24,6 +25,9 @@ app.use(express.static("public"));
 var databaseUrl = "newscraper";
 var collections = ["newScrapedData"];
 var notes = ["note"];
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI);
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
