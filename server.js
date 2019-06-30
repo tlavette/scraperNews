@@ -24,13 +24,13 @@ app.use(express.static("public"));
 const PORT = process.env.PORT || 3000;
 
 // Database configuration
-var databaseUrl = "newscraper";
+var databaseUrl = process.env.MONGODB_URI||"scraper";
 var collections = ["newScrapedData"];
 var notes = ["note"];
 
 // mongoose connect
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines");
+// mongoose.Promise = global.Promise;
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines");
 
 
 // Hook mongojs configuration to the db variable
