@@ -77,6 +77,8 @@ app.get("/scrape", function(req, res) {
       // var title = $(element).parent("a").text();
       var link = $(element).parent("a").attr("href");
 
+      // adding comment
+
       // If this found element had both a title and a link
       if (title && link) {
         // Insert the data in the scrapedData db
