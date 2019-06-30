@@ -30,10 +30,7 @@ var notes = ["note"];
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(
-process.env.MONGODB_URI || "mongodb://tlavette:rejah8@ds161041.mlab.com:61041/heroku_v70zg7pd",
-
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines");
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
