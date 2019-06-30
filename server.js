@@ -26,8 +26,16 @@ var databaseUrl = "newscraper";
 var collections = ["newScrapedData"];
 var notes = ["note"];
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI);
+
+mongoose.Promis = global.Promise;
+mongoose.connect(
+process.env.MONGODB_URI || "mongodb://tlavette:rejah8@ds161041.mlab.com:61041/heroku_v70zg7pd",
+
+{
+  useMongoClient: true
+}
+
+);
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
