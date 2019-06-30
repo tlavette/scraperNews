@@ -28,10 +28,6 @@ var databaseUrl = process.env.MONGODB_URI||"scraper";
 var collections = ["newScrapedData"];
 var notes = ["note"];
 
-// mongoose connect
-// mongoose.Promise = global.Promise;
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines");
-
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
@@ -128,72 +124,3 @@ app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Dependency list
-// var cheerio = require("cheerio");
-// var axios = require("axios");
-// var express = require("express");
-// const path = require("path");
-
-// // Set up Express App
-// var app = express();
-// var PORT = process.env.PORT || 8080
-
-// // Set up Express to handle data parsing.- standard
-// app.use(express.urlencoded({ extended: true }));
-
-// app.use(express.json());
-// app.use(express.static("./public"));
-
-
-// // Routes
-// // require("./routes/api-routes.js")(app);
-// require("./routes/html-routes.js")(app);
-
-
-// // Making a request via axios for reddit's "webdev" board. We are sure to use old.reddit due to changes in HTML structure for the new reddit. The page's Response is passed as our promise argument.
-// axios.get("https://blackamericaweb.com/").then(function(response) {
-
-//   // Load the Response into cheerio and save it to a variable
-//   // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-//   var $ = cheerio.load(response.data);
-
-//   // An empty array to save the data that we'll scrape
-//   var results = [];
-
-//   // With cheerio, find each p-tag with the "title" class
-//   // (i: iterator. element: the current element)
-//   $("div.post-title").each(function(i, element) {
-
-//     // Save the text of the element in a "title" variable
-//     var title = $(element).text();
-
-//     // In the currently selected element, look at its child elements (i.e., its a-tags),
-//     // then save the values for any "href" attributes that the child elements may have
-//     var link = $(element).parent().attr("href");
-
-//     // Save these results in an object that we'll push into the results array we defined earlier
-//     results.push({
-//       title: title,
-//       link: link
-//     });
-//   });
-
-//   // Log the results once you've looped through each of the elements found with cheerio
-//   res.json(results);
-// });
