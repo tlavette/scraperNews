@@ -28,9 +28,10 @@ var databaseUrl = "newscraper";
 var collections = ["newScrapedData"];
 var notes = ["note"];
 
-
+// mongoose connect
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines");
+
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
