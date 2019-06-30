@@ -27,7 +27,7 @@ var collections = ["newScrapedData"];
 var notes = ["note"];
 
 
-mongoose.Promis = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(
 process.env.MONGODB_URI || "mongodb://tlavette:rejah8@ds161041.mlab.com:61041/heroku_v70zg7pd",
 
