@@ -21,6 +21,8 @@ app.set("view engine","handlebars");
 // Making public folder public
 app.use(express.static("public"));
 
+const PORT = process.env.PORT || 3000;
+
 // Database configuration
 var databaseUrl = "newscraper";
 var collections = ["newScrapedData"];
@@ -122,7 +124,7 @@ app.post("/notes", function(req, res){
 
 
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });
 
