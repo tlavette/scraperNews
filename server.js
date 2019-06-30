@@ -31,10 +31,6 @@ mongoose.Promise = global.Promise;
 mongoose.connect(
 process.env.MONGODB_URI || "mongodb://tlavette:rejah8@ds161041.mlab.com:61041/heroku_v70zg7pd",
 
-{
-  useMongoClient: true
-}
-
 );
 
 // Hook mongojs configuration to the db variable
